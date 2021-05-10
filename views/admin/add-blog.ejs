@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <div class="jumbotron">
+                <h1 class="display-4">Add a new post.</h1>
+                <p class="lead">What's on your mind?</p>
+            </div>
+            <div class="container">
+                <form action="/blogs" method="POST">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title"
+                                    placeholder="Enter blog title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Type away!</label>
+                        <textarea id="description" name="description" class="form-control" rows="10"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="previewDescription" class="form-label">Preview Description</label>
+                        <input class="form-control" type="text" id="previewDescription" name="previewDescription"
+                            placeholder="Enter a preview description">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date </label>
+                        <input class="form-control" type="text" id="date" name="date" placeholder="Enter a date">
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageUrl" class="form-label">Image URL</label>
+                        <input class="form-control" type="text" id="imageUrl" name="imageUrl"
+                            placeholder="Insert an image">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <%- include('../includes/end.ejs') %>

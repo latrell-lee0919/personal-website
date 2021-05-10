@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <div class="jumbotron">
+                <h1 class="display-4">Hi Latrell.</h1>
+            </div>
+            <div class="container">
+                <form action="/login" method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" class="form-control" name="password" placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log in as admin</button>
+                </form>
+                <form action="/" method="GET" style="margin-top: 10px;">
+                    <button type="submit" class="btn btn-primary">View Only</button>
+                </form>
+            </div>
+            <%- include('../includes/end.ejs') %>
