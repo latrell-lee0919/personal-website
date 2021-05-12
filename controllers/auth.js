@@ -7,6 +7,7 @@ exports.getLogin = (req, res, next) => {
     pageTitle: "Login",
     heading: "Login",
     isAdmin: req.session.isLoggedIn,
+    wrongPassword: req.session.wrongPassword
   });
 };
 
@@ -27,6 +28,7 @@ exports.postLogin = (req, res, next) => {
             res.redirect('/');
           })
         }
+        req.session.wrongPassword = true;
         res.redirect('/login');
       })
       .catch(err => {
