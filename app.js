@@ -41,9 +41,7 @@ app.set("views", "views");
 app.use(methodOverride("_method"));
 
 const homeRoutes = require("./routes/home");
-//const aboutRoutes = require('./routes/about');
 const contactRoutes = require("./routes/contact");
-const linksRoutes = require("./routes/links");
 const blogRoutes = require("./routes/blogs");
 const adminRoutes = require("./routes/admin");
 const authRoutes = require("./routes/auth");
@@ -77,9 +75,7 @@ app.use(
 
 app.use("/", homeRoutes.routes);
 app.use("/", authRoutes.routes);
-//app.use('/about', aboutRoutes.routes);
 app.use("/contact", contactRoutes.routes);
-app.use("/links", linksRoutes.routes);
 app.use("/blogs", blogRoutes.routes);
 
 app.use("/admin", adminRoutes.routes);
