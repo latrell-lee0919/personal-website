@@ -29,6 +29,7 @@ mongoose
       if (!user) {
         const user = new User({
           email: "latrell@gmail.com",
+          password: "test"
         });
         user.save();
       }

@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const bcrypt = require('bcryptjs');
 
 exports.getLogin = (req, res, next) => {
   res.render("auth/login", {
@@ -10,14 +11,27 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
-  User.findById("6099ab70840f474b8454f88b")
+  const email = req.body.email;
+  const password = req.body.password;
+  User.findOne({ email: email })
     .then((user) => {
-      req.session.isLoggedIn = true;
-      req.session.user = user;
-      console.log(user);
-      req.session.save((err) => {
+      bcrypt
+      .compare(password, user.password)
+      .then(match => {
+        if(match) {
+          req.session.isLoggedIn = true;
+          req.session.user = user;
+          console.log(user)
+          return req.session.save(err => {
+            console.log(err);
+            res.redirect('/');
+          })
+        }
+        res.redirect('/login');
+      })
+      .catch(err => {
         console.log(err);
-        res.redirect("/");
+        res.redirect('/login')
       });
     })
     .catch((err) => console.log(err));

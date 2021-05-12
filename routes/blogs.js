@@ -37,7 +37,8 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   Blog.findByIdAndDelete(req.params.id)
     .then(() => {
-      Blog.find().then((blogs) => {
+      Blog.find()
+      .then((blogs) => {
         // res.json(blogs);
         res.render("blog/blog-preview", {
           blogs: blogs,
