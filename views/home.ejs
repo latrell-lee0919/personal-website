@@ -22,5 +22,66 @@
                 
             </div>
 
-            <%- include('includes/about.ejs') %>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="display-5">Latrell Lee</h1>
+                        <p class="lead">
+                            Associate Software Engineer (UVA COMM '20)
+                        </p>
+                        <p>I am currently an Associate Software Engineer at Capital One Financial.
+                            I graduated from the University of Virginia in 2020 with my degree in Commerce,
+                            concentrating in Information Technology. Upon graduating, I joined Capital One under
+                            their CODA (Capital One Developer Academy) program in order to focus on learning full stack
+                            web-development skills.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <img src='<%= imageURL %>' alt="" class="img-fluid">
+                    </div>
+                </div>
+                <form action="/contact" method="GET">
+                    <button type="submit" class="btn btn-secondary">Contact Me</button>
+                </form>
+            </div>
+            <hr class="my-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                            alt="" class="img-fluid">
+                    </div>
+                    <div class="col">
+                        <!-- <h1 class="display-5">Mentorship</h1> -->
+                        <p class="lead">
+                            Giving Back To The World
+                        </p>
+                        <p>
+                            I believe that mentorship is the key to any individual's growth and development.
+                            Without the many mentors I've had throughout my life and academic career, there's
+                            no way that I'd be where I am today.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="lead">
+                            Self Love & Self Investment
+                        </p>
+                        <p>
+                            In my opinion, self love and investing in yourself is arguably to most important
+                            (and most overlooked) part of becoming a better human being. No matter the goal,
+                            whether it's to get physically stronger, better at a specific skill or unlearning
+                            harmful ideas & behaviors, self love & self improvement are unequivocal tenets.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <img src="https://images.pexels.com/photos/2821823/pexels-photo-2821823.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                            alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
                 <%- include('includes/end.ejs') %>

@@ -2,7 +2,12 @@ const express = require("express");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const methodOverride = require("method-override");
-const bcrypt = require("bcryptjs");
+//const bcrypt = require("bcryptjs");
+const S3 = require('aws-sdk/clients/s3');
+require('dotenv').config();
+//const config = require('./config');
+const accessKeyID = process.env.AWS_ACCESS_KEY_ID;
+const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
 const path = require("path");
 
@@ -90,4 +95,4 @@ app.use((req, res, next) => {
   })
 });
 
-app.listen(3000);
+app.listen(3000, () => console.log(`${accessKeyID}, ${secretAccessKey}`));
