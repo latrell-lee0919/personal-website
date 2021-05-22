@@ -1,0 +1,59 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <div class="jumbotron">
+                <h1 class="display-4">Add a new project.</h1>
+                <p class="lead">Flex your creativity.</p>
+            </div>
+            <div class="container">
+                <form action="/projects" method="POST">
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Project category</label>
+                        <input class="form-control" type="text" id="category" name="category"
+                            placeholder="Enter the project category">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title"
+                                    placeholder="Enter project title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="previewDescription" class="form-label">Preview Description</label>
+                        <input class="form-control" type="text" id="previewDescription" name="previewDescription"
+                            placeholder="Enter a preview description">
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageUrl" class="form-label">Image URL</label>
+                        <input class="form-control" type="text" id="imageUrl" name="imageUrl"
+                            placeholder="Insert an image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Type away!</label>
+                        <textarea id="description" name="description" class="form-control" rows="10"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="link" class="form-label">Link </label>
+                        <input class="form-control" type="text" id="link" name="link" placeholder="Enter the project's link">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gitHubLink" class="form-label">GitHub Link </label>
+                        <input class="form-control" type="text" id="gitHubLink" name="gitHubLink" placeholder="Enter the project's source code link">
+                    </div>
+                    <div class="mb-3">
+                        <label for="techStack" class="form-label">Tech Stack </label>
+                        <input class="form-control" type="text" id="techStack" name="techStack" placeholder="Enter the project's tech stack">
+                    </div>
+                    <div class="mb-3">
+                        <label for="videoTitle" class="form-label">Video Title </label>
+                        <input class="form-control" type="text" id="videoTitle" name="videoTitle" placeholder="Enter the project's video link">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <%- include('../includes/end.ejs') %>

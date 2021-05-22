@@ -4,27 +4,27 @@
     <body>
         <%- include('../includes/navigation.ejs') %>
             <div class="jumbotron">
-                <h1 class="display-4">Blog Posts</h1>
-                <p class="lead">Sharing my thoughts with all of you.</p>
+                <h1 class="display-4">Projects</h1>
+                <p class="lead">Sharing my work with all of you.</p>
             </div>
-            <% if (blogs.length> 0) { %>
+            <% if (projects.length> 0) { %>
                 <div class="container">
                     <div class="row row-cols-auto">
-                        <% for (let blog of blogs) { %>
+                        <% for (let project of projects) { %>
                             <div class="col">
                                 <div class="card" style="width: 18rem; margin-top: 10px;">
-                                    <img src="<%= blog.imageUrl %> " class="card-img-top" alt="<%= blog.title %> ">
+                                    <img src="<%= project.imageUrl %> " class="card-img-top" alt="<%= project.title %> ">
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <%= blog.title %>
+                                            <%= project.title %>
                                         </h4>
                                         <p class="card-text">
-                                            <%= blog.previewDescription %>
+                                            <%= project.previewDescription %>
                                         </p>
-                                        <a href="/blogs/<%= blog.id %>" class="btn btn-outline-dark">Read More</a>
+                                        <a href="/projects/<%= project.id %>" class="btn btn-outline-dark">Read More</a>
                                         <% if (isAdmin) { %>
-                                            <form method="POST" action="/blogs/<%= blog.id %>?_method=DELETE"> <button
-                                                    type="submit" class="btn btn-primary">Delete Blog</button>
+                                            <form method="POST" action="/projects/<%= project.id %>?_method=DELETE"> <button
+                                                    type="submit" class="btn btn-primary">Delete Project</button>
                                             </form>
                                             <% } %>
                                     </div>
