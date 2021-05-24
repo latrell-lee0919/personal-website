@@ -9,29 +9,84 @@
             </div>
             <% if (projects.length> 0) { %>
                 <div class="container">
-                    <div class="row row-cols-auto">
-                        <% for (let project of projects) { %>
-                            <div class="col">
-                                <div class="card" style="width: 18rem; margin-top: 10px;">
-                                    <img src="<%= project.imageUrl %> " class="card-img-top" alt="<%= project.title %> ">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <%= project.title %>
-                                        </h4>
-                                        <p class="card-text">
-                                            <%= project.previewDescription %>
-                                        </p>
-                                        <a href="/projects/<%= project.id %>" class="btn btn-outline-dark">Read More</a>
-                                        <% if (isAdmin) { %>
-                                            <form method="POST" action="/projects/<%= project.id %>?_method=DELETE"> <button
-                                                    type="submit" class="btn btn-primary">Delete Project</button>
-                                            </form>
-                                            <% } %>
+                    <% if (webDevelopment.length > 0) { %>
+                        <p class="lead">Web Development:</p>
+                        <div class="row row-cols-auto">
+                            <% for (let project of webDevelopment) { %>
+                                <div class="col">
+                                    <div class="card" style="width: 18rem; margin-top: 10px;">
+                                        <img src="<%= project.imageUrl %> " class="card-img-top" alt="<%= project.title %> ">
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <%= project.title %>
+                                            </h4>
+                                            <p class="card-text">
+                                                <%= project.previewDescription %>
+                                            </p>
+                                            <a href="/projects/<%= project.id %>" class="btn btn-outline-dark">Read More</a>
+                                            <% if (isAdmin) { %>
+                                                <form method="POST" action="/projects/<%= project.id %>?_method=DELETE"> <button
+                                                        type="submit" class="btn btn-primary">Delete Project</button>
+                                                </form>
+                                                <% } %>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <% } %>
-                    </div>
+                                <% } %>
+                        </div>
+                    <% } %>
+                    <% if (mobileDevelopment.length > 0) { %>
+                        <p class="lead" style="margin-top: 20px;">Mobile App Development:</p>
+                        <div class="row row-cols-auto">
+                            <% for (let project of mobileDevelopment) { %>
+                                <div class="col">
+                                    <div class="card" style="width: 18rem; margin-top: 10px;">
+                                        <img src="<%= project.imageUrl %> " class="card-img-top" alt="<%= project.title %> ">
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <%= project.title %>
+                                            </h4>
+                                            <p class="card-text">
+                                                <%= project.previewDescription %>
+                                            </p>
+                                            <a href="/projects/<%= project.id %>" class="btn btn-outline-dark">Read More</a>
+                                            <% if (isAdmin) { %>
+                                                <form method="POST" action="/projects/<%= project.id %>?_method=DELETE"> <button
+                                                        type="submit" class="btn btn-primary">Delete Project</button>
+                                                </form>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    <% } %>
+                    <% if (machineLearning.length > 0) { %>
+                        <p class="lead" style="margin-top: 20px;">Machine Learning:</p>
+                        <div class="row row-cols-auto">
+                            <% for (let project of machineLearning) { %>
+                                <div class="col">
+                                    <div class="card" style="width: 18rem; margin-top: 10px;">
+                                        <img src="<%= project.imageUrl %> " class="card-img-top" alt="<%= project.title %> ">
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <%= project.title %>
+                                            </h4>
+                                            <p class="card-text">
+                                                <%= project.previewDescription %>
+                                            </p>
+                                            <a href="/projects/<%= project.id %>" class="btn btn-outline-dark">Read More</a>
+                                            <% if (isAdmin) { %>
+                                                <form method="POST" action="/projects/<%= project.id %>?_method=DELETE"> <button
+                                                        type="submit" class="btn btn-primary">Delete Project</button>
+                                                </form>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    <% } %>
                 </div>
                 <% } else { %>
                     <h1 class="display-4">Coming soon!</h1>

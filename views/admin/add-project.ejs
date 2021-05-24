@@ -11,8 +11,12 @@
                 <form action="/projects" method="POST">
                     <div class="mb-3">
                         <label for="category" class="form-label">Project category</label>
-                        <input class="form-control" type="text" id="category" name="category"
-                            placeholder="Enter the project category">
+                        <select class="form-select form-select-lg mb-3" name="category">
+                            <option selected>Select Category</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                          </select>
                     </div>
                     <div class="row">
                         <div class="col">
