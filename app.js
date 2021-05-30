@@ -15,7 +15,7 @@ const rootDir = require("./util/path");
 
 const app = express();
 const mongoose = require("mongoose");
-const mongodb_uri = "mongodb://localhost/blogs_db";
+const mongodb_uri = "mongodb://localhost/project_db";
 
 const store = new MongoDBStore({
   uri: mongodb_uri,
@@ -47,7 +47,7 @@ app.use(methodOverride("_method"));
 
 const homeRoutes = require("./routes/home");
 const contactRoutes = require("./routes/contact");
-const blogRoutes = require("./routes/blogs");
+const projectRoutes = require("./routes/projects");
 const adminRoutes = require("./routes/admin");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users"); // for testing
@@ -81,7 +81,7 @@ app.use(
 app.use("/", homeRoutes.routes);
 app.use("/", authRoutes.routes);
 app.use("/contact", contactRoutes.routes);
-app.use("/blogs", blogRoutes.routes);
+app.use("/projects", projectRoutes.routes);
 
 app.use("/admin", adminRoutes.routes);
 app.use("/users", userRoutes.routes); // for testing
@@ -95,4 +95,4 @@ app.use((req, res, next) => {
   })
 });
 
-app.listen(3000, () => console.log(`${accessKeyID}, ${secretAccessKey}`));
+app.listen(3000);
