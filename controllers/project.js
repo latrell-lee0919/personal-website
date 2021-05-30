@@ -7,7 +7,7 @@ exports.getProjectPreview = (req, res) => {
       let webDev = [];
       let mobileDev = [];
       let machineLearning = [];
-      projects.forEach(function (project) {
+      projects.forEach((project) => {
         let category = project.category;
         if (category == "Web Development") {
           webDev.push(project)
@@ -16,7 +16,6 @@ exports.getProjectPreview = (req, res) => {
         } else if (category == "Machine Learning") {
           machineLearning.push(project)
         }
-        console.log(webDev);
       })
       res.render("project/project-preview", {
         projects: projects,

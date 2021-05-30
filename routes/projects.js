@@ -57,7 +57,6 @@ router.delete("/:id", (req, res) => {
         } else if (category == "Machine Learning") {
           machineLearning.push(project)
         }
-        console.log(webDev);
       })
         res.render("project/project-preview", {
           projects: projects,
