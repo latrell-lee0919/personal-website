@@ -1,19 +1,6 @@
 const AWS = require('aws-sdk');
-const Instagram = require('instagram-web-api');
-const User = require('../models/user');
-require('dotenv').config();
-const username = process.env.username;
-const password = process.env.password;
 
-exports.getSections = (req, res, next) => {
-    const client = new Instagram({ username, password })
-    client
-      .login()
-      .then(() => {
-        client
-          .getProfile()
-          .then(console.log(client.getProfile()))
-      })
+exports.getSections = async (req, res, next) => {
     const file = 'Headshot.JPG';
     const s3 = new AWS.S3({});
     let base64;
