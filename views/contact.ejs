@@ -5,7 +5,7 @@
         <%- include('includes/navigation.ejs') %>
             <%- include('includes/jumbotron.ejs') %>
                 <div class="container">
-                    <form action="">
+                    <form>
                         <p class="lead">
                             Feel free to contact me via email! I'm always willing to
                             be a mentor or provide general advice to anyone looking.
@@ -13,26 +13,60 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
-                                    <label for="fullName" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="fullName" placeholder="Enter your name">
+                                    <label for="senderName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="senderName" name="senderName"
+                                        placeholder="Enter your name">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                    <label for="senderEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="senderEmail" name="senderEmail"
+                                        placeholder="Enter your email">
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="subject" class="form-label">Subject</label>
                             <input class="form-control" type="text" id="subject" placeholder="Enter a subject">
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" class="form-control" rows="10"></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="10"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    <p class="lead" id="successMessage" style="margin-top: 20px;"></p>
+                    <script>
+                        const form = document.querySelector('form')
+                        form.addEventListener('submit', event => {
+                            // prevent the form submit from refreshing the page
+                            event.preventDefault()
+
+                            const { senderName, senderEmail, message } = event.target
+
+                            const endpoint = "https://pvzpciw6vb.execute-api.us-east-1.amazonaws.com/default/sendContactEmail"
+
+                            const body = JSON.stringify({
+                                senderName: senderName.value,
+                                senderEmail: senderEmail.value,
+                                message: message.value
+                            });
+                            const requestOptions = {
+                                method: "POST",
+                                body
+                            };
+
+                            fetch(endpoint, requestOptions)
+                                .then((response) => {
+                                    if (!response.ok) throw new Error("Error in fetch");
+                                    return response.json();
+                                })
+                                .then((response) => {
+                                    document.getElementById("successMessage").innerText =
+                                        "Email sent successfully!";
+                                })
+                        });
+                    </script>
                 </div>
                 <%- include('includes/end.ejs') %>
