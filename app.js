@@ -4,6 +4,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const methodOverride = require("method-override");
 const S3 = require('aws-sdk/clients/s3');
 require('dotenv').config();
+const multer = require('multer');
 const accessKeyID = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
@@ -51,9 +52,19 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users"); // for testing
 const User = require("./models/user");
 
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  }
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(rootDir, "public")));
+app.use(multer({storage: fileStorage}).single('imageUrl'));
+app.use('/images', express.static(path.join(rootDir, "images")));
 app.use(
   session({
     secret: "my secret",
