@@ -51,6 +51,7 @@ const adminRoutes = require("./routes/admin");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users"); // for testing
 const User = require("./models/user");
+const Project = require("./models/project");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -94,6 +95,17 @@ app.use("/projects", projectRoutes.routes);
 
 app.use("/admin", adminRoutes.routes);
 app.use("/users", userRoutes.routes); // for testing
+
+app.get("/data", (req, res) => {
+  Project.find()
+    .then((projects) => {
+      res.json(projects);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 
 app.use((req, res, next) => {
   res.status(404).render("404", {

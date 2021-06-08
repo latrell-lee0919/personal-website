@@ -7,16 +7,6 @@ router.get("/", projectController.getProjectPreview);
 
 router.get("/:id", projectController.getProject);
 
-router.get("/project/data", (req, res) => {
-  Project.find()
-    .then((projects) => {
-      res.json(projects);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
 router.post("/", (req, res) => {
   const image = req.file;
   const imageURL = image.path;
