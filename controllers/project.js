@@ -36,6 +36,7 @@ exports.getProject = (req, res) => {
   const projectId = req.params.id;
   Project.findById(projectId)
     .then((project) => {
+
       res.render("project/individual-project", {
         project: project,
         pageTitle: project.title,
