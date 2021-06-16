@@ -14,7 +14,8 @@ const rootDir = require("./util/path");
 
 const app = express();
 const mongoose = require("mongoose");
-const mongodb_uri = "mongodb://localhost/project_db";
+//const mongodb_uri = "mongodb://localhost/project_db";
+const mongodb_uri = "mongodb+srv://latrell_admin:SRvT7ufraeXxYbak@cluster0.8d7xk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const store = new MongoDBStore({
   uri: mongodb_uri,
@@ -28,11 +29,11 @@ mongoose
     useCreateIndex: true,
   })
   .then((result) => {
-    // for testing purposes
+    // for testing purposes, remove this before deploying
     User.findOne().then((user) => {
       if (!user) {
         const user = new User({
-          email: "latrell@gmail.com",
+          email: "latrell@test.com",
           password: "test"
         });
         user.save();
@@ -74,19 +75,6 @@ app.use(
     store: store,
   })
 );
-
-// testing sessions stuff
-// app.use((req, res, next) => {
-// if (!req.session.user) {
-// return next();
-// }
-// User.findById(req.session.user._id)
-// .then(user => {
-// req.user = user;
-// next();
-// })
-// .catch(err => console.log(err));
-// });
 
 app.use("/", homeRoutes.routes);
 app.use("/", authRoutes.routes);

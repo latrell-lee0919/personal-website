@@ -12,7 +12,10 @@
                 </p>
             </div>
 
-            <div class="text-center">
+            <!-- testing youtube iframe player -->
+            <div id="player" class="container" style="display: flex; justify-content: center; width: 75%; height: 500px;"></div>
+
+            <div class="text-center" style="margin-top: 30px;">
                 <p class="h4">Tech Stack:</p>
             </div>
             <div class="text-center">
@@ -24,7 +27,7 @@
                 <p class="h4">Why This Exists:</p>
             </div>
             <div class="text-center">
-                <p class="lead">
+                <p>
                     <%= project.description %>
                 </p>
             </div>
@@ -35,8 +38,7 @@
                 <a href="<%= project.gitHubLink %>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Source Code</a>
             </div>
 
-            <!-- testing youtube iframe player -->
-            <div id="player" style="display: flex; justify-content: center;"></div>
+            
 
             <script>
             // 2. This code loads the IFrame Player API code asynchronously.
@@ -56,14 +58,14 @@
             const url = window.location.href;
             function onYouTubeIframeAPIReady() {
                 (async () => {
-                    const response = await fetch('http://localhost:3000/data')
+                    const response = await fetch('http://localhost:3000/data') // need to change this to my deployed link as well
                     const json = await response.json();
                     json.forEach(project => {
                         projects.push(project)
                         projectIds.push(project._id)
                     });
                     for (let i = 0; i < projectIds.length; i++) {
-                        if (url == ("http://localhost:3000/projects/").concat(projectIds[i])) {
+                        if (url == ("http://localhost:3000/projects/").concat(projectIds[i])) { // change this line to reflect the new url before deploying
                             console.log("hi")
                             console.log(url)
                             //console.log(projectIds[i])

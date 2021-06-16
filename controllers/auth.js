@@ -27,9 +27,10 @@ exports.postLogin = (req, res, next) => {
             console.log(err);
             res.redirect('/');
           })
+        } else {
+          req.session.wrongPassword = true;
+          res.redirect('/login');
         }
-        req.session.wrongPassword = true;
-        res.redirect('/login');
       })
       .catch(err => {
         console.log(err);
