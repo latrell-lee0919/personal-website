@@ -8,7 +8,7 @@
                 <p class="lead">Sharing my work with all of you.</p>
             </div>
             <% if (projects.length> 0) { %>
-                <div class="container">
+                <div class="container" style="margin-bottom: 10px;">
                     <% if (webDevelopment.length > 0) { %>
                         <p class="lead">Web Development:</p>
                         <div class="row row-cols-auto">
@@ -91,4 +91,6 @@
                 <% } else { %>
                     <h1 class="display-4">Coming soon!</h1>
                     <% } %>
+
+                    <%- include('../includes/footer.ejs') %>
                         <%- include('../includes/end.ejs') %>
