@@ -5,6 +5,8 @@ const methodOverride = require("method-override");
 const S3 = require('aws-sdk/clients/s3');
 require('dotenv').config();
 const multer = require('multer');
+const compression = require('compression');
+
 const accessKeyID = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
@@ -14,8 +16,7 @@ const rootDir = require("./util/path");
 
 const app = express();
 const mongoose = require("mongoose");
-//const mongodb_uri = "mongodb://localhost/project_db";
-const mongodb_uri = "mongodb+srv://latrell_admin:SRvT7ufraeXxYbak@cluster0.8d7xk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const mongodb_uri = process.env.DB;
 
 const store = new MongoDBStore({
   uri: mongodb_uri,
@@ -27,18 +28,6 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-  })
-  .then((result) => {
-    // for testing purposes, remove this before deploying
-    User.findOne().then((user) => {
-      if (!user) {
-        const user = new User({
-          email: "latrell@test.com",
-          password: "test"
-        });
-        user.save();
-      }
-    });
   });
 
 app.set("view engine", "ejs");
@@ -63,6 +52,7 @@ const fileStorage = multer.diskStorage({
   }
 });
 
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(multer({storage: fileStorage}).single('imageUrl'));
@@ -104,4 +94,4 @@ app.use((req, res, next) => {
   })
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

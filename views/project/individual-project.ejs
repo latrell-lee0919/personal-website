@@ -12,7 +12,7 @@
                 </p>
             </div>
 
-            <!-- testing youtube iframe player -->
+            
             <div id="player" class="container" style="display: flex; justify-content: center; width: 75%; height: 500px;"></div>
 
             <div class="text-center" style="margin-top: 30px;">
@@ -68,9 +68,7 @@
                         if (url == ("http://localhost:3000/projects/").concat(projectIds[i])) { // change this line to reflect the new url before deploying
                             console.log("hi")
                             console.log(url)
-                            //console.log(projectIds[i])
                             currentProject = projectIds[i]
-                            //let found = projects.find(currentProject => currentProject);
                             console.log(currentProject)
                         }
                     }
@@ -81,12 +79,6 @@
                     });
                     console.log(videoId)
                 })();
-                // fetch('http://localhost:3000/data')
-                // .then(response => response.json())
-                // .then(data => console.log(data))
-                // .catch((error) => {
-                //     console.log(error)
-                // })
                 player = new YT.Player('player', {
                 height: '270',
                 width: '480',
