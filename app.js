@@ -40,7 +40,6 @@ const projectRoutes = require("./routes/projects");
 const adminRoutes = require("./routes/admin");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users"); // for testing
-const User = require("./models/user");
 const Project = require("./models/project");
 
 const fileStorage = multer.diskStorage({

@@ -22,9 +22,7 @@ exports.postLogin = (req, res, next) => {
         if(match) {
           req.session.isLoggedIn = true;
           req.session.user = user;
-          console.log(user)
           return req.session.save(err => {
-            console.log(err);
             res.redirect('/');
           })
         } else {
